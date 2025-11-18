@@ -15,19 +15,19 @@ on:
 
 jobs:
     if_statement:
-    runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
 
-    steps:
-      # Step alleen voor production
-      - name: Deploy to production
-        if: ${{ github.event.inputs.environment == 'production' }}
-        run: echo "Deploying to production!"
-
-      # Step alleen voor development of staging
-      - name: Run in test mode
-        if: ${{ github.event.inputs.environment == 'development' || github.event.inputs.environment == 'staging' }}
-        run: echo "Running in test mode"
+      steps:
+        # Step alleen voor production
+        - name: Deploy to production
+          if: ${{ github.event.inputs.environment == 'production' }}
+          run: echo "Deploying to production!"
+  
+        # Step alleen voor development of staging
+        - name: Run in test mode
+          if: ${{ github.event.inputs.environment == 'development' || github.event.inputs.environment == 'staging' }}
+          run: echo "Running in test mode"
 
       # Step die altijd uitgevoerd wordt
-      - name: Show selected environment
-        run: echo "Selected environment" || echo ${{ github.event.inputs.environment }}
+        - name: Show selected environment
+          run: echo "Selected environment" || echo ${{ github.event.inputs.environment }}
