@@ -30,4 +30,5 @@ jobs:
 
       # Step die altijd uitgevoerd wordt
         - name: Show selected environment
-          run: echo "Selected environment" || echo ${{ github.event.inputs.environment }}
+          run: |   
+            echo "Selected environment: ${{ github.event.inputs.environment }}
